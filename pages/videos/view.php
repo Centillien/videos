@@ -28,9 +28,8 @@ $content .= elgg_view_comments($video);
 $body = elgg_view_layout('content', array(
 	'content' => $content,
 	'title' => $title,
-	//'filter' => '',
-	'header' => '',
 	'filter_override' => elgg_view('videos/nav', array('selected' => $vars['page'])),
+	'header' => '',
 ));
 
 echo elgg_view_page($title, $body);
