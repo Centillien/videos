@@ -1,7 +1,8 @@
 <?php
 /**
- * Elgg videos plugin everyone page
- *	Licence : GNU2
+ *      Author : Gerard Kanters
+ *      @package Videos
+ *      Licence : GNU2
  */
 
 elgg_push_breadcrumb(elgg_echo('videos:mostviewed'));

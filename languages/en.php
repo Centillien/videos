@@ -1,15 +1,8 @@
 <?php
 /**
- * videos English language file
- *	Author : Sarath C | Team Webgalli
- *	Team Webgalli | Elgg developers and consultants
- *	Mail : webgalli@gmail.com
- *	Web	: http://webgalli.com | http://plugingalaxy.com
- *	Skype : 'team.webgalli' or 'drsanupmoideen'
- *	@package Elgg-videos
- * 	Plugin info : Upload/ Embed videos. Save uploaded videos in youtube and save your bandwidth and server space
- *	Licence : GNU2
- *	Copyright : Team Webgalli 2011-2015
+ *      Author : Gerard Kanters
+ *      @package Videos
+ *      Licence : GNU2
  */
 
 $english = array(
@@ -29,6 +22,7 @@ $english = array(
 	'videos:friends' => "Connections videos",
 	'videos:user:friends' => "Videos from connections",
 	'videos:everyone' => "All site videos",
+	'videos:all' => "All",
 	'videos:this:group' => "Videos in %s",
 	'videos:morevideos' => "More videos",
 	'videos:more' => "More",

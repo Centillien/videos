@@ -5,7 +5,6 @@
  *	@package Videos
  * 	Plugin info : Upload/ Embed videos. Save uploaded videos in youtube and save your bandwidth and server space
  *	Licence : GNU2
- *	Copyright : Team Webgalli 2011-2015
  */
 
 /**

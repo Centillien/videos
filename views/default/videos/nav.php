@@ -4,6 +4,10 @@
  */
 if(!elgg_is_logged_in()){
 $tabs = array(
+         'all' => array(
+                'title' => elgg_echo('all'),
+                'url' => "videos/all",
+         ),
          'featured' => array(
                 'title' => elgg_echo('videos:featured'),
                 'url' => "videos/featured",
@@ -23,6 +27,10 @@ $tabs = array(
 $user = elgg_get_logged_in_user_entity();
 
 $tabs = array(
+         'all' => array(
+                'title' => elgg_echo('all'),
+                'url' => "videos/all",
+         ),
 	'mine' => array(
                 'title' => elgg_echo('mine'),
                 'url' => "videos/owner/{$user->username}",
