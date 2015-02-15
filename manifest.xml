@@ -18,13 +18,9 @@
                 <type>plugin</type>
                 <name>views_counter</name>
         </suggests>
-	<screenshot>
-		<description>World view</description>
-		<path>screenshots/world.gif</path>
-	</screenshot>
-	<screenshot>
-		<description>Upload</description>
-		<path>screenshots/upload.gif</path>
-	</screenshot>
+        <screenshot>
+                <description>World view</description>
+                <path>screenshots/world.gif</path>
+        </screenshot>
 	<admin_interface>simple</admin_interface>
 </plugin_manifest>
