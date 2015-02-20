@@ -56,12 +56,16 @@ if ($video->save()) {
 	system_message(elgg_echo('videos:save:success'));
 	//add to river only if new
 	if ($new) {
-		elgg_create_river_item(array(
-                	'view' => 'river/object/videos/create',
-                        'action_type' => 'create',
-                        'subject_guid' => elgg_get_logged_in_user_guid(),
-                        'object_guid' => $video->guid,
-                         ));
+		if (function_exists('elgg_get_version(true)')) {
+			elgg_create_river_item(array(
+        	        	'view' => 'river/object/videos/create',
+                	        'action_type' => 'create',
+                        	'subject_guid' => elgg_get_logged_in_user_guid(),
+                        	'object_guid' => $video->guid,
+                         	));
+		}else{
+			add_to_river('river/object/videos/create','create', elgg_get_logged_in_user_guid(), $video->guid);
+		}
 	}
 	forward($video->getURL());
 } else {
