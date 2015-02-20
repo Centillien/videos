@@ -14,6 +14,10 @@
 		<type>elgg_version</type>
 		<version>2010030101</version>
 	</requires>
+	<requires>
+		<type>plugin</type>
+		<name>thewire</name>
+	</requires>	
         <suggests>
                 <type>plugin</type>
                 <name>views_counter</name>
