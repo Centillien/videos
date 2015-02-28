@@ -33,6 +33,7 @@ $english = array(
 	
 	
         'videos:featured' => "Featured videos",
+	'videos:youtube' => "Search Results",
         'videos:toggle:feature' => "Feature",
         'videos:mostviewed' => "Most viewed videos",
         'videos:popular' => "Most appreciated videos",
