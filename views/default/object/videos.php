@@ -117,7 +117,7 @@ HTML;
 	if ($excerpt) {
 		$excerpt = "$excerpt";
 	}
-	$video_icon = videoembed_create_embed_object($video_url, $video->guid,320); 
+	$video_icon = videoembed_create_embed_object($video_url, $video->guid,450); 
 
 	$content = "$excerpt";
 
@@ -133,6 +133,7 @@ HTML;
 	$list_body = elgg_view('object/elements/summary', $params);
 
 	if ($mobile == true || (elgg_get_context() == widgets)){
+		$video_icon = videoembed_create_embed_object($video_url, $video->guid,320);
 		echo elgg_view_image_block($video_icon,"");
 		echo elgg_view_image_block($list_body,"");
 	}else { 

@@ -5,8 +5,7 @@
  *
  * @package Embed Video Library
  * @license http://www.gnu.org/licenses/gpl.html GNU Public License version 2
- * @author Cash Costello
- * @copyright Cash Costello 2009-2011
+ * @author Gerard Kanters
  *
  *
  * Current video sites supported:
@@ -102,13 +101,12 @@ function videoembed_add_object($type, $url, $guid, $width, $height) {
 	// could move these into an array and use sprintf
 	switch ($type) {
                 case 'facebook':
-                        ?>
+			?>
                         <div id="fb-root"></div> <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/nl_NL/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
                         <?php
                         $videodiv .= "<object width=\"$width\" height=\"$height\"><div class=\"fb-post\" data-href=\"{$url}\" data-width=\"$width\"></div></object>";
                         break;
 		case 'youtube':
-			//$videodiv .= "<object width=\"$width\" height=\"$height\"><param name=\"movie\" value=\"https://{$url}&hl=en&fs=1&showinfo=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><embed src=\"https://{$url}&hl=en&fs=1&showinfo=0\" type=\"application/x-shockwave-flash\" allowfullscreen=\"true\" width=\"$width\" height=\"$height\" wmode=\"transparent\"></embed></object>";
 			$videodiv .= "<iframe type=\"text/html\" width=\"{$width}\" height=\"{$height}\" src=\"https://{$url}\" frameborder=\"0\"></iframe>";
 			break;
 		case 'google':
@@ -160,6 +158,9 @@ function videoembed_calc_size(&$width, &$height, $aspect_ratio, $toolbar_height)
 		$width = 284;
 	}
 
+        if (elgg_in_context('widgets')) {
+                $width = 200;
+        }
 	$height = round($width / $aspect_ratio) + $toolbar_height;
 }
 
