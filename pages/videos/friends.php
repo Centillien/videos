@@ -14,16 +14,7 @@ elgg_register_title_button();
 
 $title = elgg_echo('videos:friends');
 
-$content = elgg_list_entities_from_relationship(array(
-        'type' => 'object',
-        'subtype' => 'videos',
-        'full_view' => false,
-        'relationship' => 'friend',
-        'relationship_guid' => $owner->guid,
-        'relationship_join_on' => 'container_guid',
-        'no_results' => elgg_echo("videos:none"),
-));
-
+$content = list_user_friends_objects($owner->guid, 'videos', 10, false);
 
 if (!$content) {
 	$content = elgg_echo('videos:none');

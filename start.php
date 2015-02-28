@@ -153,6 +153,9 @@ function videos_page_handler($page) {
 		case 'featured':
 			include "$pages/featured.php";
                         break;
+                case 'youtube':
+                        include "$pages/youtube.php";
+                        break;
 		case 'mostviewed':
 			include "$pages/mostviewed.php";
                         break;

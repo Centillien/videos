@@ -41,6 +41,8 @@ function videoembed_create_embed_object($url, $guid, $videowidth=0) {
 		return videoembed_youtube_handler($url, $guid, $videowidth);
 	} else if (strpos($url, 'youtu.be') != false) {
 		return videoembed_youtube_shortener_parse_url($url, $guid, $videowidth);
+        } else if (strpos($url, 'facebook.com') != false) {
+                return videoembed_facebook_shortener_parse_url($url, $guid, $videowidth);
 	} else if (strpos($url, 'video.google.com') != false) {
 		return videoembed_google_handler($url, $guid, $videowidth);
 	} else if (strpos($url, 'vimeo.com') != false) {
@@ -99,6 +101,12 @@ function videoembed_add_object($type, $url, $guid, $width, $height) {
 
 	// could move these into an array and use sprintf
 	switch ($type) {
+                case 'facebook':
+                        ?>
+                        <div id="fb-root"></div> <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/nl_NL/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+                        <?php
+                        $videodiv .= "<object width=\"$width\" height=\"$height\"><div class=\"fb-post\" data-href=\"{$url}\" data-width=\"$width\"></div></object>";
+                        break;
 		case 'youtube':
 			//$videodiv .= "<object width=\"$width\" height=\"$height\"><param name=\"movie\" value=\"https://{$url}&hl=en&fs=1&showinfo=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><embed src=\"https://{$url}&hl=en&fs=1&showinfo=0\" type=\"application/x-shockwave-flash\" allowfullscreen=\"true\" width=\"$width\" height=\"$height\" wmode=\"transparent\"></embed></object>";
 			$videodiv .= "<iframe type=\"text/html\" width=\"{$width}\" height=\"{$height}\" src=\"https://{$url}\" frameborder=\"0\"></iframe>";
@@ -228,6 +236,28 @@ function videoembed_youtube_shortener_parse_url($url) {
 
 	return $embed_object;
 }
+
+/**
+ * main facebook interface
+ *
+ * @param string $url
+ * @param integer $guid unique identifier of the widget
+ * @param integer $videowidth  optional override of admin set width
+ * @return string css style, video div, and flash <object>
+ */
+
+function videoembed_facebook_shortener_parse_url($url, $guid, $videowidth) {
+        $aspect_ratio = 0.8;
+
+        videoembed_calc_size($videowidth, $videoheight, $aspect_ratio, 20);
+
+        $embed_object = videoembed_add_css($guid, $videowidth, $videoheight);
+
+        $embed_object .= videoembed_add_object('facebook', $url, $guid, $videowidth, $videoheight);
+
+        return $embed_object;
+}
+
 
 /**
  * main google interface
