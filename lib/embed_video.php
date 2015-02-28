@@ -353,6 +353,12 @@ function videoembed_vimeo_parse_url($url) {
                 }
 
                 $hash = $matches[4];
+		
+		//GK, parse last part of URL, in case of staff picked or group URL's
+		if(empty($hash)){
+			$hash = end(explode( "/", $url ));
+		}
+
         }
 
         return $hash;
