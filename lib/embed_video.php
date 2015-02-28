@@ -107,7 +107,7 @@ function videoembed_add_object($type, $url, $guid, $width, $height) {
 			$videodiv .= "<embed id=\"VideoPlayback\" src=\"https://video.google.com/googleplayer.swf?docid={$url}&hl=en&fs=true&\" style=\"width:{$width}px;height:{$height}px\" allowFullScreen=\"true\" allowScriptAccess=\"always\" type=\"application/x-shockwave-flash\" wmode=\"transparent\"> </embed>";
 			break;
 		case 'vimeo':
-			$videodiv .= "<object width=\"$width\" height=\"$height\"><param name=\"allowfullscreen\" value=\"true\" /><param name=\"allowscriptaccess\" value=\"always\" /><param name=\"movie\" value=\"https://vimeo.com/moogaloop.swf?clip_id={$url}&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=&amp;fullscreen=1\" /><embed src=\"https://vimeo.com/moogaloop.swf?clip_id={$url}&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=&amp;fullscreen=1\" type=\"application/x-shockwave-flash\" allowfullscreen=\"true\" allowscriptaccess=\"always\" width=\"$width\" height=\"$height\" wmode=\"transparent\" ></embed></object>";
+			$videodiv .= "<iframe type=\"text/html\" width=\"{$width}\" height=\"{$height}\" src=\"//player.vimeo.com/video/{$url}\" frameborder=\"0\"></iframe>";
 			break;
 		case 'metacafe':
 			$videodiv .= "<embed src=\"https://www.metacafe.com/fplayer/{$url}.swf\" width=\"$width\" height=\"$height\" wmode=\"transparent\" pluginspage=\"https://www.macromedia.com/go/getflashplayer\" type=\"application/x-shockwave-flash\"></embed>";
@@ -339,31 +339,25 @@ function videoembed_vimeo_handler($url, $guid, $videowidth) {
  * @return string hash
  */
 function videoembed_vimeo_parse_url($url) {
-	// separate parsing embed url
-	if (strpos($url, 'object') != false) {
-		return videoembed_vimeo_parse_embed($url);
-	}
+        if (strpos($url, 'groups') != false) {
+                if (!preg_match('/(https?:\/\/)(www\.)?(vimeo\.com\/groups)(.*)(\/videos\/)([0-9]*)/', $url, $matches)) {
+                        //echo "malformed vimeo group url";
+                        return;
+                }
 
-	if (strpos($url, 'groups') != false) {
-		if (!preg_match('/(https?:\/\/)(www\.)?(vimeo\.com\/groups)(.*)(\/videos\/)([0-9]*)/', $url, $matches)) {
-			//echo "malformed vimeo group url";
-			return;
-		}
+                $hash = $matches[6];
+        } else {
+                if (!preg_match('/(https:\/\/)(www\.)?(vimeo.com\/)([0-9]*)/', $url, $matches)) {
+                        //echo "malformed vimeo url";
+                        return;
+                }
 
-		$hash = $matches[6];
-	} else {
-		if (!preg_match('/(http:\/\/)(www\.)?(vimeo.com\/)([0-9]*)/', $url, $matches)) {
-			//echo "malformed vimeo url";
-			return;
-		}
+                $hash = $matches[4];
+        }
 
-		$hash = $matches[4];
-	}
-
-	//echo $hash;
-
-	return $hash;
+        return $hash;
 }
+
 
 /**
  * parse vimeo embed code
