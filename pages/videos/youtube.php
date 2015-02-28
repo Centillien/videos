@@ -48,7 +48,7 @@ if ($_GET['q'] && $_GET['maxResults']) {
       case 'youtube#video':
 	  $videos .= "</br><a href='/videos/add/$user->guid?title=$title&desc=$desc&video_url=$video_url'>Add this video:</a> ". $searchResult['snippet']['title'];
       $videos .= "</br>";
-	  $videos .=  "<iframe width='200' height='150' src='https://www.youtube.com/embed/";
+	  $videos .=  "<iframe width='450' height='320' src='https://www.youtube.com/embed/";
       $videos .= $searchResult['id']['videoId'];  
 	  $videos .= "' frameborder='0'></iframe>";
 	  $videos .= "</br>";
