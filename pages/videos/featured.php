@@ -14,12 +14,9 @@ $options = array(
                                 'type' => 'object',
                                 'subtype' => 'videos',
                                 'full_view' => FALSE,
-								
                                 'metadata_name_value_pairs' => array(
-                                         array(
-                                                "name" => "featured",
-                                                "value" => true
-                                      )
+                                	"name" => "featured",
+                                        "value" => true
                                 ),
                         );
 $content = elgg_list_entities_from_metadata($options);
