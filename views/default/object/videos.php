@@ -5,10 +5,8 @@
  *	Copyright : 
  */
 elgg_load_library('elgg:videos:embed');
-if(elgg_is_active_plugin("mobile_app")){
-        $mobile = detectmobile();
-}
 
+$mobile = detectmobile();
 
 $full = elgg_extract('full_view', $vars, FALSE);
 $video = elgg_extract('entity', $vars, FALSE);
@@ -94,7 +92,7 @@ HTML;
 	<div style="margin-left:10px;">
 	<?php 
         if($mobile) {
-        	echo videoembed_create_embed_object($video_url, $video->guid,320);
+        	echo videoembed_create_embed_object($video_url, $video->guid,280);
         }else{
         	echo videoembed_create_embed_object($video_url, $video->guid,700);
         }
@@ -133,7 +131,7 @@ HTML;
 	$list_body = elgg_view('object/elements/summary', $params);
 
 	if ($mobile == true || (elgg_get_context() == widgets)){
-		$video_icon = videoembed_create_embed_object($video_url, $video->guid,320);
+		$video_icon = videoembed_create_embed_object($video_url, $video->guid,280);
 		echo elgg_view_image_block($video_icon,"");
 		echo elgg_view_image_block($list_body,"");
 	}else { 

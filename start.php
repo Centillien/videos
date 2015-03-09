@@ -4,6 +4,7 @@
  *	@package Elgg-videos
  */
 
+require_once 'vendors/Mobile_Detect.php';
 
 elgg_register_event_handler('init', 'system', 'videos_init');
 /**
