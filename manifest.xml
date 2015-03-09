@@ -2,8 +2,8 @@
 <plugin_manifest xmlns="http://www.elgg.org/plugin_manifest/1.8">
 	<name>Videos</name>
 	<author>Gerard Kanters</author>
-	<version>1.10</version>
-	<category>Multimedia</category>
+	<version>1.10.3</version>
+	<category>Media</category>
 	<category>content</category>
 	<blurb>Add / Upload / Embed and comment on videos.</blurb>
 	<description>Adds the ability for users to search/ upload/embed videos to elgg sites. Uploaded videos must be hosted on Youtube.com or Facebook.</description>
