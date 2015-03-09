@@ -56,7 +56,7 @@ if ($video->save()) {
 	system_message(elgg_echo('videos:save:success'));
 	//add to river only if new
 	if ($new) {
-		if (function_exists('elgg_get_version(true)')) {
+		if (function_exists('elgg_get_version')) {
 			elgg_create_river_item(array(
         	        	'view' => 'river/object/videos/create',
                 	        'action_type' => 'create',

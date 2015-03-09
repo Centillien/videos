@@ -50,7 +50,7 @@ function videos_init() {
 	elgg_extend_view('css/elgg', 'videos/css');
 	elgg_register_widget_type('videos', elgg_echo('videos'), elgg_echo('videos:widget:description'),array('dashboard', 'profile', 'main', 'index'));
 
-        if (function_exists('elgg_get_version(true)')) {
+	if (function_exists('elgg_get_version')) {
                 elgg_register_notification_event('object', 'videos');
         } else {
                 register_notification_object('object', 'videos', elgg_echo('videos:new'));
