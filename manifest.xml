@@ -14,10 +14,10 @@
 		<type>elgg_release</type>
 		<version>1.8</version>
 	</requires>
-	<requires>
+	<suggests>
 		<type>plugin</type>
 		<name>thewire</name>
-	</requires>	
+	</suggests>	
         <suggests>
                 <type>plugin</type>
                 <name>views_counter</name>
