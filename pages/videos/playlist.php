@@ -7,8 +7,9 @@
 
 $user = elgg_get_logged_in_user_entity();
 
-$OAUTH2_CLIENT_ID = '960602716554-pgjnjtuit71v0alb2hl7f5bd5964g9v6.apps.googleusercontent.com';
-$OAUTH2_CLIENT_SECRET = 'pjW_IRWcEzWumoYu514WpO0u';
+$OAUTH2_CLIENT_ID = myvox_get_plugin_setting('client_id', 'videos');
+$OAUTH2_CLIENT_SECRET = myvox_get_plugin_setting('client_secret', 'videos');
+
 
 $client = new Google_Client();
 $client->setClientId($OAUTH2_CLIENT_ID);
