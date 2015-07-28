@@ -26,4 +26,21 @@ echo elgg_echo('youtube:question3');
 
 echo elgg_view('input/text', array('name'=>'params[developer_key]', 'value'=> $developer_key));
 
+echo "</div><br><br><div>";
+
+$client_id = $vars['entity']->client_id;
+
+echo elgg_echo('youtube:question4');
+
+echo elgg_view('input/text', array('name'=>'params[client_id]', 'value'=> $client_id));
+
+echo "</div><br><br><div>";
+
+$client_secret = $vars['entity']->client_secret;
+
+echo elgg_echo('youtube:question5');
+
+echo elgg_view('input/text', array('name'=>'params[client_secret]', 'value'=> $client_secret));
+
 echo "</div>";
+
