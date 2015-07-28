@@ -80,6 +80,8 @@ $english = array(
         'youtube:question1' => 'Do you want to view Youtube videos in content ?',
         'youtube:question2' => 'In which context should we show the search e.g (videos,blog,thewire) ?',
         'youtube:question3' => 'Put your Youtube developer key below, to enable search. A key can be requested at <a href="https://console.developers.google.com" target="_blank">Google developers</a>',
+        'youtube:question4' => 'Put your Client ID used for this app below',
+        'youtube:question5' => 'Put your Client Secret for this app below',
 
 	/**
 	 * Widget
