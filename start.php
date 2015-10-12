@@ -4,7 +4,11 @@
  *	@package Elgg-videos
  */
 
-require_once 'vendors/Mobile_Detect.php';
+//load class to detect mobile devices, if not already detected by mobile plugin
+if(!elgg_is_active_plugin("mobile_app")){
+	require_once 'vendors/Mobile_Detect.php';
+}
+
 
 elgg_register_event_handler('init', 'system', 'videos_init');
 /**
