@@ -120,19 +120,11 @@ HTML;
 	$content = "$excerpt";
 
 	$params = array(
-		'text' => $video->title,
-		'href' => 'videos/view/' . $video->guid,
-		'is_trusted' => true,
-	);
-	$title_link = myvox_view('output/url', $params);
-
-	$params = array(
 		'entity' => $video,
 		'metadata' => $metadata,
 		'subtitle' => $subtitle,
 		'tags' => $tags,
 		'content' => $content,
-		'title' => $title_link,
 	);
 
 	$params = $params + $vars;

@@ -59,7 +59,7 @@ function videos_init() {
 	elgg_register_plugin_hook_handler('notify:entity:message', 'object', 'videos_notify_message');
 
         // Register a URL handler for video posts
-        elgg_register_plugin_hook_handler('entity:url', 'object', 'videos_url_handler');
+	elgg_register_entity_url_handler('object', 'videos', 'videos_url');
 
 	elgg_register_entity_type('object', 'videos');
 	add_group_tool_option('videos', elgg_echo('videos:enablevideos'), true);
@@ -206,26 +206,15 @@ function videos_url_forwarder($page) {
 }
 
 /**
- * Returns the URL from a video entity
+ * Override the videos url
  *
- * @param string $hook   'entity:url'
- * @param string $type   'object'
- * @param string $url    The current URL
- * @param array  $params Hook parameters
+ * @param ElggObject $entity Page object
  * @return string
  */
-function videos_url_handler($hook, $type, $url, $params) {
-    $entity = $params['entity'];
-
-    // Check that the entity is a video object
-    if ($entity->getSubtype() !== 'videos') {
-        // This is not a video object, so there's no need to go further
-        return;
-    }
-
-    return "videos/view/{$entity->guid}/". elgg_get_friendly_title($entity->title);
+function videos_url($entity) {
+	$title = elgg_get_friendly_title($entity->title);
+	return "videos/view/$entity->guid/$title";
 }
-
 
 /**
  * Add a menu item to an ownerblock
