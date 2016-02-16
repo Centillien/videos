@@ -1,0 +1,16 @@
+{
+  "name": "centillien/videos",
+  "description": "Videos functionality in Elgg",
+  "type": "elgg-plugin",
+  "keywords": [
+    "elgg",
+    "plugin"
+  ],
+  "license": "GPL-2.0",
+  "authors": [
+    {
+      "name": "Gerard Kanters",
+      "email": "gkanters@netcare.nl"
+    }
+  ]
+}
