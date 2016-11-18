@@ -80,19 +80,19 @@ function videos_init() {
 */
 function videos_view_filter($hook, $entity_type, $returnvalue, $params){
 	elgg_load_library('elgg:videos:embed');
-	$patterns = array(	'#(((https?://)?)|(^./))(((www.)?)|(^./))youtube\.com/watch[?]v=([^\[\]()<.,\s\n\t\r]+)#i',
-						'#(((https?://)?)|(^./))(((www.)?)|(^./))youtu\.be/([^\[\]()<.,\s\n\t\r]+)#i',
-						'/(https?:\/\/)(www\.)?(vimeo\.com\/groups)(.*)(\/videos\/)([0-9]*)/',
-						'/(https?:\/\/)(www\.)?(vimeo.com\/)([0-9]*)/',
-						'/(https?:\/\/)(www\.)?(metacafe\.com\/watch\/)([0-9a-zA-Z_-]*)(\/[0-9a-zA-Z_-]*)(\/)/',
-						'/(https?:\/\/www\.dailymotion\.com\/.*\/)([0-9a-z]*)/',
+	$patterns = array(	'/(((https?:\/\/)?)|(^.\/))(((www.)?)|(^.\/))youtube\.com\/watch[?]v=([^\[\]()<.,\s\n\t\r]+)/i',
+						'/(((https?:\/\/)?)|(^.\/))(((www.)?)|(^.\/))youtu\.be\/([^\[\]()<.,\s\n\t\r]+)/i',
+						'/(https?:\/\/)(www\.)?(vimeo\.com\/groups)(.*)(\/videos\/)([0-9]*)/i',
+						'/(https?:\/\/)(www\.)?(vimeo.com\/)([0-9]*)/i',
+						'/(https?:\/\/)(www\.)?(metacafe\.com\/watch\/)([0-9a-zA-Z_-]*)(\/[0-9a-zA-Z_-]*)(\/)/i',
+						'/(https?:\/\/www\.dailymotion\.com\/.*\/)([0-9a-z]*)/i',
 						);
 	$regex = "/<a[\s]+[^>]*?href[\s]?=[\s\"\']+"."(.*?)[\"\']+.*?>"."([^<]+|.*?)?<\/a>/";
 	if(preg_match_all($regex, $returnvalue, $matches, PREG_SET_ORDER)){
  		foreach($matches as $match){
 			foreach ($patterns as $pattern){
-				if (preg_match($pattern, $match[2]) > 0){
-					$returnvalue = str_replace($match[0], videoembed_create_embed_object($match[2], uniqid('videos_embed_'), 350), $returnvalue);
+				if (preg_match($pattern, strip_tags($match[2])) > 0){
+					$returnvalue = str_replace($match[0], videoembed_create_embed_object(strip_tags($match[2]), uniqid('videos_embed_'), 350), $returnvalue);
 				}				
 			}
 		}
