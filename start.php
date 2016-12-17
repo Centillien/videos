@@ -5,10 +5,6 @@
  */
 
 //load class to detect mobile devices, if not already detected by mobile plugin
-if(!elgg_is_active_plugin("mobile_app")){
-	require_once 'vendors/Mobile_Detect.php';
-}
-
 
 elgg_register_event_handler('init', 'system', 'videos_init');
 /**
@@ -63,7 +59,7 @@ function videos_init() {
 	elgg_register_plugin_hook_handler('notify:entity:message', 'object', 'videos_notify_message');
 
         // Register a URL handler for video posts
-	elgg_register_entity_url_handler('object', 'videos', 'videos_url');
+	elgg_register_plugin_hook_handler('entity:url', 'object', 'videos_url_handler');
 
 	elgg_register_entity_type('object', 'videos');
 	add_group_tool_option('videos', elgg_echo('videos:enablevideos'), true);
@@ -215,7 +211,8 @@ function videos_url_forwarder($page) {
  * @param ElggObject $entity Page object
  * @return string
  */
-function videos_url($entity) {
+function videos_url_handler($hook, $type, $url, $params) {
+	$entity = $params['entity'];
 	$title = elgg_get_friendly_title($entity->title);
 	return "videos/view/$entity->guid/$title";
 }
