@@ -4,7 +4,6 @@
  *	@package Elgg-videos
  */
 
-//load class to detect mobile devices, if not already detected by mobile plugin
 
 elgg_register_event_handler('init', 'system', 'videos_init');
 /**
@@ -213,6 +212,11 @@ function videos_url_forwarder($page) {
  */
 function videos_url_handler($hook, $type, $url, $params) {
 	$entity = $params['entity'];
+
+        if (!elgg_instanceof($entity, 'object', 'videos')) {
+                return;
+        }
+
 	$title = elgg_get_friendly_title($entity->title);
 	return "videos/view/$entity->guid/$title";
 }

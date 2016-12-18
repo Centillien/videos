@@ -76,22 +76,3 @@ function videos_prepare_form_vars($video = null) {
 
 	return $values;
 }
-
-function detectmobile(){
-
-                $detect = new Mobile_Detect;
-                $mobile = $detect->isMobile();
-                $tablet = $detect->isTablet();
-
-                if($detect->isAndroidOS()){
-                        //elgg_extend_view( 'forms/login'   , 'mobile_app/login' );
-                        //elgg_extend_view( 'forms/register', 'mobile_app/login' );
-                }
-
-                if(($mobile == true) && ($tablet == false)) {
-                return true;
-                } else {
-                return false;
-        }
-}
-
