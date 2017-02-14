@@ -9,7 +9,7 @@ $htmlBody = <<<END
 <br>
 <form action="$action" method="GET">
   <div>
-    <b><center>Search Videos:</center></b><br> <input type="search" id="q" name="q" placeholder="Zoek Videos">
+    <b><center>Zoek Videos:</center></b><br> <input type="search" id="q" name="q" placeholder="Zoek Videos">
   </div>
   <div>
     Results (max 10): <input type="number" id="maxResults" name="maxResults" min="1" max="10" step="1" value="5">
