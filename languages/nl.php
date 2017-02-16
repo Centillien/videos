@@ -30,6 +30,8 @@ $dutch = array(
 	'videos:new' => "Een nieuwe video",
 	'videos:via' => "via videos",
 	'videos:none' => 'Geen videos',
+        'videos:search' => 'Zoek',
+        'videos:search:videos' => 'Zoek videos',
 	
 	
         'videos:featured' => "Uitgelichte videos",

@@ -30,6 +30,8 @@ $english = array(
 	'videos:new' => "A new video",
 	'videos:via' => "via videos",
 	'videos:none' => 'No videos',
+	'videos:search' => 'Search',
+	'videos:search:videos' => 'Search videos',
 	
 	
         'videos:featured' => "Featured videos",
