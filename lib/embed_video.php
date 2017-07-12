@@ -158,9 +158,10 @@ function videoembed_calc_size(&$width, &$height, $aspect_ratio, $toolbar_height)
 		$width = 284;
 	}
 
-        if (elgg_in_context('widgets')) {
-                $width = 200;
-        }
+	// commented by nikos
+	// if (elgg_in_context('widgets')) {
+		//$width = 200;
+	// }
 	$height = round($width / $aspect_ratio) + $toolbar_height;
 }
 
@@ -225,9 +226,11 @@ function videoembed_youtube_parse_url($url) {
  * @param string $url
  * @return string youtube.com/v/hash
  */
-function videoembed_youtube_shortener_parse_url($url) {
+// function videoembed_youtube_shortener_parse_url($url) { // OBS by nikos
+function videoembed_youtube_shortener_parse_url($url, $guid, $videowidth) {
 	$path = parse_url($url, PHP_URL_PATH);
-	$videourl = 'youtube.com/v' . $path;
+	//$videourl = 'youtube.com/v' . $path; // OBS by nikos
+	$videourl = 'www.youtube.com/embed' . $path; // added by nikos
 
 	videoembed_calc_size($videowidth, $videoheight, 425/320, 24);
 
