@@ -215,7 +215,7 @@ function videoembed_youtube_parse_url($url) {
         if (!preg_match('/embed\/(.*?)[?]/', $path, $parts)) {
             return;
         }
-        print_r($parts);
+
 	    $hash = $parts[1];
     } else {
         $parts = parse_url($url);
