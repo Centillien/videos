@@ -15,7 +15,6 @@
  */
 
 function videos_get_page_content_featured($guid = NULL) {
-
                 $return = array();
                 $options = array(
                                 'type' => 'object',

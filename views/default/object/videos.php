@@ -90,7 +90,7 @@ HTML;
 
 <div class="video elgg-content mts">
 	<div style="margin-left:10px;">
-	<?php 
+	<?php
         if($mobile) {
         	echo videoembed_create_embed_object($video_url, $video->guid,280);
         }else{

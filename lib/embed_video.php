@@ -31,7 +31,6 @@
  * @return string html video div with object embed code or error message
  */
 function videoembed_create_embed_object($url, $guid, $videowidth=0) {
-
 	if (!isset($url)) {
 		return '<p><b>' . elgg_echo('embedvideo:novideo') . '</b></p>';
 	}
@@ -40,8 +39,8 @@ function videoembed_create_embed_object($url, $guid, $videowidth=0) {
 		return videoembed_youtube_handler($url, $guid, $videowidth);
 	} else if (strpos($url, 'youtu.be') != false) {
 		return videoembed_youtube_shortener_parse_url($url, $guid, $videowidth);
-        } else if (strpos($url, 'facebook.com') != false) {
-                return videoembed_facebook_shortener_parse_url($url, $guid, $videowidth);
+    } else if (strpos($url, 'facebook.com') != false) {
+        return videoembed_facebook_shortener_parse_url($url, $guid, $videowidth);
 	} else if (strpos($url, 'video.google.com') != false) {
 		return videoembed_google_handler($url, $guid, $videowidth);
 	} else if (strpos($url, 'vimeo.com') != false) {
@@ -175,6 +174,7 @@ function videoembed_calc_size(&$width, &$height, $aspect_ratio, $toolbar_height)
  */
 function videoembed_youtube_handler($url, $guid, $videowidth) {
 	// this extracts the core part of the url needed for embeding
+
 	$videourl = videoembed_youtube_parse_url($url);
 	if (!isset($videourl)) {
 		return '<p><b>' . sprintf(elgg_echo('embedvideo:parseerror'), 'youtube') . '</b></p>';
@@ -196,7 +196,6 @@ function videoembed_youtube_handler($url, $guid, $videowidth) {
  * @return string subdomain.youtube.com/v/hash
  */
 function videoembed_youtube_parse_url($url) {
-
 	if (strpos($url, 'feature=hd') != false) {
 		// this is high def with a different aspect ratio
 	}
@@ -211,9 +210,18 @@ function videoembed_youtube_parse_url($url) {
 	$domain = $matches[2] . $matches[3];
 	$path = $matches[4];
 
-	$parts = parse_url($url);
-	parse_str($parts['query'], $vars);
-	$hash = $vars['v'];
+	if (strpos($path, "embed/") > -1) {
+	    echo $path;
+        if (!preg_match('/embed\/(.*?)[?]/', $path, $parts)) {
+            return;
+        }
+        print_r($parts);
+	    $hash = $parts[1];
+    } else {
+        $parts = parse_url($url);
+        parse_str($parts['query'], $vars);
+        $hash = $vars['v'];
+    }
 
 	//return $domain . 'v/' . $hash;
 	return $domain . 'embed/' . $hash;

@@ -76,6 +76,7 @@ function videos_init() {
 function videos_view_filter($hook, $entity_type, $returnvalue, $params){
 	elgg_load_library('elgg:videos:embed');
 	$patterns = array(	'/(((https?:\/\/)?)|(^.\/))(((www.)?)|(^.\/))youtube\.com\/watch[?]v=([^\[\]()<.,\s\n\t\r]+)/i',
+                        '/(((https?:\/\/)?)|(^.\/))(((www.)?)|(^.\/))youtube\.com\/embed\/([^\[\]()<.,\s\n\t\r]+)/i',
 						'/(((https?:\/\/)?)|(^.\/))(((www.)?)|(^.\/))youtu\.be\/([^\[\]()<.,\s\n\t\r]+)/i',
 						'/(https?:\/\/)(www\.)?(vimeo\.com\/groups)(.*)(\/videos\/)([0-9]*)/i',
 						'/(https?:\/\/)(www\.)?(vimeo.com\/)([0-9]*)/i',
