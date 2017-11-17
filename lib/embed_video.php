@@ -211,7 +211,6 @@ function videoembed_youtube_parse_url($url) {
 	$path = $matches[4];
 
 	if (strpos($path, "embed/") > -1) {
-	    echo $path;
         if (!preg_match('/embed\/(.*?)[?]/', $path, $parts)) {
             return;
         }
